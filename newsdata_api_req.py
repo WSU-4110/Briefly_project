@@ -3,7 +3,9 @@ import json
 import os
 from datetime import datetime
 
-class NewsDataAPIFetcher:
+from news_fetcher_strategy import NewsFetcherStrategy
+
+class NewsDataAPIFetcher(NewsFetcherStrategy):
     BASE_URL = "https://newsdata.io/api/1/news"
 
     def __init__(self, query, category):
