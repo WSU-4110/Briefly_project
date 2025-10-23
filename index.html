@@ -1,86 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MyNews Portal</title>
+  <title>TheNewsAPI Headlines</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <div class="logo">News Platform</div>
-    <div class="header-right">
-      <div class="search-wrap">
-        <input type="text" id="searchBox" placeholder="Search news..." aria-label="Search news">
-        <button id="clearSearch" title="Clear search" aria-label="Clear search">×</button>
-      </div>
-
-      <select id="sortDropdown" aria-label="Sort articles">
-        <option value="latest">Latest</option>
-        <option value="popular">Popular</option>
-        <option value="trending">Trending</option>
-      </select>
-
-      <!-- Auth area -->
-      <div id="authArea">
-        <button id="signInBtn" class="primary">Sign In</button>
-      </div>
-
-      <button id="modeToggle" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
-    </div>
-  </header>
-
-  <div class="container">
-    <aside>
-      <ul id="categoryList">
-        <li data-category="finance" class="active">FINANCE</li>
-        <li data-category="banking">BANKING</li>
-        <li data-category="retail">RETAIL</li>
-        <li data-category="tech">TECH</li>
-        <li data-category="manufacturing">MANUFACTURING</li>
-        <li data-category="consumer">CONSUMER</li>
-        <li data-category="stock">STOCK CHART</li>
-      </ul>
-    </aside>
-
-    <main>
-      <div class="results-bar">
-        <span id="resultsCount">Showing latest in FINANCE</span>
-      </div>
-      <div id="newsContainer"></div>
-      <button id="loadMoreBtn">Load More</button>
-    </main>
-  </div>
-
-  <!-- Sign In Modal -->
-  <div id="authModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="authTitle">
-    <div class="modal-content">
-      <button class="modal-close" id="closeAuth" aria-label="Close">×</button>
-      <h2 id="authTitle">Sign in</h2>
-      <form id="authForm" novalidate>
-        <label>
-          Email
-          <input type="email" id="email" placeholder="you@example.com" required />
-        </label>
-        <label>
-          Password
-          <div class="password-wrap">
-            <input type="password" id="password" placeholder="••••••••" minlength="6" required />
-            <button type="button" id="togglePwd" aria-label="Show password">👁️</button>
-          </div>
-        </label>
-        <label class="remember">
-          <input type="checkbox" id="rememberMe"> Remember me
-        </label>
-        <button type="submit" class="primary full">Continue</button>
-        <p class="helper">No backend needed—this demo stores a session in your browser.</p>
-        <p id="authError" class="error" role="alert" aria-live="assertive"></p>
-      </form>
-    </div>
-  </div>
-
-  <!-- Import JS -->
+  <h1>📰 Latest Headlines (TheNewsAPI)</h1>
+  <div id="news-container"></div>
   <script src="script.js"></script>
 </body>
 </html>
