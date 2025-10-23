@@ -81,6 +81,56 @@
   </div>
 
   <!-- Import JS -->
-  <script src="script.js"></script>
+  <script type="module">
+    import UserSession from './userSession.js';
+    import './script.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const session = UserSession.getInstance();
+
+      const signInBtn = document.getElementById("signInBtn");
+      const modeToggle = document.getElementById("modeToggle");
+      const authArea = document.getElementById("authArea");
+
+      // restore existing session
+      if (session.email) {
+        authArea.innerHTML = `
+          <span class="user-chip" title="${session.email}">
+            <span>Hi, ${session.username}</span>
+            <button id="logoutBtn" type="button">Logout</button>
+          </span>
+        `;
+        document.getElementById("logoutBtn").addEventListener("click", () => {
+          session.logout();
+          location.reload();
+        });
+      }
+
+      // sign-in prompt
+      if (signInBtn) {
+        signInBtn.addEventListener("click", () => {
+          const email = prompt("Enter your email:");
+          if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            session.login(email);
+            alert(`Welcome, ${session.username}!`);
+            location.reload();
+          } else {
+            alert("Invalid email. Please try again.");
+          }
+        });
+      }
+
+      // dark-mode toggle using Singleton
+      if (modeToggle) {
+        if (session.theme === "dark") modeToggle.textContent = "☀️";
+        modeToggle.addEventListener("click", () => {
+          session.toggleTheme();
+          modeToggle.textContent =
+            session.theme === "dark" ? "☀️" : "🌙";
+        });
+      }
+    });
+  </script>
 </body>
 </html>
+
