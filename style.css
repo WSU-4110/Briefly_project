@@ -1,191 +1,220 @@
+/* =========================
+   BASE / LIGHT MODE
+   ========================= */
+
 body {
-	margin: 0;
-font-family: 'DM Serif Display'
-	, serif;
-background:
-#f4f6f9;
-color:
-#222;
-transition:
-	all 0.3s ease;
+  margin: 0;
+  font-family: 'DM Serif Display', serif;
+  background-color: #f5f8fa;   /* light background */
+  color: #000000;               /* light text */
+  transition: all 0.3s ease;
 }
 
-.dark-mode {
-background:
-#1e1e1e;
-color:
-#f1f1f1;
-}
-
+/* Layout: header bar */
 header {
-display:
-	flex;
-justify-content:
-	space-between;
-align-items:
-	center;
-background:
-#004080;
-color:
-#fff;
-	padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #003366;    /* deep navy */
+  color: #ffffff;
+  padding: 1rem;
+  border-bottom: 1px solid transparent;
 }
 
 .logo {
-	font-size: 2rem;
-font-weight:
-	bold;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 .header-right {
-display:
-	flex;
-align-items:
-	center;
-	gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-#searchBox, #sortDropdown {
-padding: 0.5rem;
-border-radius: 4px;
-border:
-none;
+/* search box + sort dropdown */
+#searchBox,
+#sortDropdown {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: inherit;
 }
 
-#modeToggle, #signInBtn {
-padding: 0.5rem 1rem;
-border:
-none;
-cursor:
-pointer;
-border-radius: 4px;
-background:
-#fff;
-color:
-#004080;
-font-weight:
-bold;
+/* buttons: mode toggle + sign in */
+#modeToggle,
+#signInBtn {
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  font-family: inherit;
+}
+
+#modeToggle {
+  background-color: #ffffff;
+  color: #004080;
 }
 
 #signInBtn {
-background:
-#ffcc00;
-color:
-#222;
+  background-color: #ffcc00;
+  color: #222;
 }
 
+/* page layout: sidebar + main content */
 .container {
-display:
-	grid;
-	grid-template-columns: 220px 1fr;
-	gap: 1rem;
-	padding: 1rem;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 1rem;
+  padding: 1rem;
 }
 
+/* sidebar */
 aside {
-	border-right: 2px solid #ddd;
+  border-right: 2px solid #ddd;
 }
 
 aside ul {
-list-style:
-	none;
-	padding: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 aside ul li {
-	margin: 1rem 0;
-font-weight:
-	bold;
-cursor:
-	pointer;
-color:
-#004080;
+  margin: 1rem 0;
+  font-weight: bold;
+  cursor: pointer;
+  color: #004080;
 }
 
-aside ul li:
-hover {
-text-decoration:
-	underline;
+aside ul li:hover {
+  text-decoration: underline;
 }
 
+/* news feed area */
 #newsContainer {
-display:
-grid;
-gap: 1rem;
+  display: grid;
+  gap: 1rem;
 }
 
+/* article cards */
 .card {
-background:
-#fff;
-	padding: 1rem;
-	border-radius: 6px;
-	border: 1px solid #ddd;
-	box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  font-family: inherit;
 }
 
+/* card text styles */
 .card h2 {
-	margin: 0 0 0.5rem 0;
-color:
-#004080;
+  margin: 0 0 0.5rem 0;
+  color: #004080;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  font-weight: 600;
 }
 
 .card h2 a {
-color:
-	inherit;
-text-decoration:
-	none;
+  color: inherit;
+  text-decoration: none;
 }
 
-.card h2 a:
-hover {
-text-decoration:
-	underline;
+.card h2 a:hover {
+  text-decoration: underline;
 }
 
 .card .summary {
-	margin: 0.5rem 0;
+  margin: 0.5rem 0;
+  line-height: 1.4;
 }
 
-.card .source, .card .date {
-display:
-	block;
-	margin-top: 0.5rem;
-	font-size: 0.85rem;
-color:
-	gray;
+.card .source,
+.card .date {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: gray;
 }
 
+/* load more button */
 #loadMoreBtn {
-margin: 1rem 0;
-padding: 0.75rem 1.5rem;
-background:
-#004080;
-color:
-#fff;
-border:
-none;
-border-radius: 6px;
-cursor:
-pointer;
+  margin: 1rem 0;
+  padding: 0.75rem 1.5rem;
+  background-color: #004080;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 #loadMoreBtn:hover {
-background:
-#003366;
+  background-color: #003366;
 }
 
+/* =========================
+   DARK MODE
+   =========================
+   Add class "dark-mode" to <body> to activate
+   ========================= */
+
+.dark-mode {
+  background-color: #0d1b2a;    /* deep blue/charcoal */
+  color: #ffffff;
+}
+
+/* header in dark mode */
 .dark-mode header {
-background:
-#111;
+  background-color: #000000;
+  color: #ffffff;
+  border-bottom: 1px solid #444;
 }
 
-.dark-mode .card {
-background:
-#2a2a2a;
-	border: 1px solid #444;
-}
-
+/* sidebar links in dark mode */
 .dark-mode aside ul li {
-color:
-#f1f1f1;
+  color: #f1f1f1;
+}
+
+/* cards in dark mode */
+.dark-mode .card {
+  background-color: #1b263b;
+  color: #ffffff;
+  border: 1px solid #334;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+}
+
+/* metadata text in cards (source/date) in dark mode */
+.dark-mode .card .source,
+.dark-mode .card .date {
+  color: #cccccc;
+}
+
+/* search + dropdown in dark mode */
+.dark-mode #searchBox,
+.dark-mode #sortDropdown {
+  background-color: #1b263b;
+  color: #ffffff;
+  border: 1px solid #334;
+}
+
+/* toggle button in dark mode */
+.dark-mode #modeToggle {
+  background-color: #1b263b;
+  color: #ffffff;
+  border: 1px solid #334;
+}
+
+/* sign-in button can stay yellow for contrast; optional tweak */
+.dark-mode #signInBtn {
+  background-color: #ffcc00;
+  color: #222;
 }

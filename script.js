@@ -80,7 +80,7 @@ const formatCountText = (n, scopeLabel) =>
 /***** Rendering *****/
 function renderCard(article, query = "") {
   const card = document.createElement("div");
-  card.classList.add("card");
+card.classList.add("card", "card-light");
   card.innerHTML = `
     <h2><a href="${article.link}" target="_blank" rel="noopener">${highlight(article.headline, query)}</a></h2>
     <p class="summary">${highlight(article.summary, query)}</p>
@@ -176,11 +176,6 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-/***** Dark Mode *****/
-modeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-  modeToggle.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
-});
 
 /***** Auth (modal + localStorage “session”) *****/
 function openAuth() {
