@@ -7,7 +7,7 @@ from unittest import mock
 
 import requests
 
-from newsdata_api_req import NewsDataAPIFetcher
+from API_Callers.newsdata_api_req import NewsDataAPIFetcher
 
 #USES METHOD BEFORE AND AFTER EVERY TEST
 @pytest.fixture(autouse=True)
