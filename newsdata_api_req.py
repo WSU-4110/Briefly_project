@@ -20,7 +20,7 @@ class NewsDataAPIFetcher(NewsFetcherStrategy):
     def generate_filename(self):
         #MMDDYYYY
         today = datetime.today().strftime("%m%d%Y")
-        return f"rawnews_{today}.json"
+        return f"raw_news_{today}.json"
 
     def fetch_news(self):
         params = {
