@@ -2,12 +2,12 @@ import requests
 
 class NewsAPIClient:
     BASE_URL = "https://newsapi.org/v2/top-headlines"
-    API_KEY = "YOUR_NEWSAPI_KEY"
+    API_KEY = "NEWSAPI_KEY"
 
     def __init__(self, country="us"):
         self.country = country
 
-    # Method 1
+    #method 1
     def make_params(self, category=None):
         """Build request parameters."""
         params = {
@@ -18,7 +18,7 @@ class NewsAPIClient:
             params["category"] = category
         return params
 
-    # Method 2
+    #method 2
     def validate_country(self):
         """Check if country code is valid."""
         if not isinstance(self.country, str):
@@ -27,7 +27,7 @@ class NewsAPIClient:
             raise ValueError("Country code must be exactly 2 characters")
         return True
 
-    # Method 3
+    #method 3
     def send_request(self, category=None):
         """Perform the API request."""
         params = self.make_params(category)
@@ -38,7 +38,7 @@ class NewsAPIClient:
 
         return response.json()
 
-    # Method 4 -- after fixing it
+    #method 4 -- after fixing it
     def extract_titles(self, json_data):
         """Return list of titles."""
         if "articles" not in json_data:
@@ -53,14 +53,14 @@ class NewsAPIClient:
 
         return titles
 
-    # Method 5
+    #method 5
     def count_articles(self, json_data):
         """Return number of articles."""
         if "articles" not in json_data:
             return 0
         return len(json_data["articles"])
 
-    # Method 6
+    #method 6
     def is_empty(self, json_data):
         """Check if no articles are present."""
         articles = json_data.get("articles", [])

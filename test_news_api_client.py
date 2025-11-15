@@ -5,9 +5,8 @@ from unittest.mock import patch, MagicMock
 from news_api_client import NewsAPIClient
 
 
-# ------------------------------
-# Method 1: make_params()
-# ------------------------------
+#method 1: make_params()
+
 def test_make_params_basic():
     client = NewsAPIClient("us")
     params = client.make_params()
@@ -21,9 +20,8 @@ def test_make_params_with_category():
     assert params["category"] == "business"
 
 
-# ------------------------------
-# Method 2: validate_country()
-# ------------------------------
+# method 2: validate_country()
+
 def test_validate_country_valid():
     client = NewsAPIClient("us")
     assert client.validate_country() is True
@@ -39,9 +37,8 @@ def test_validate_country_wrong_type():
         client.validate_country()
 
 
-# ------------------------------
-# Method 3: send_request()
-# ------------------------------
+# method 3: send_request()
+
 @patch("requests.get")
 def test_send_request_success(mock_get):
     mock_response = MagicMock()
@@ -66,9 +63,8 @@ def test_send_request_failure(mock_get):
         client.send_request()
 
 
-# ------------------------------
-# Method 4: extract_titles()
-# ------------------------------
+# method 4: extract_titles()
+
 def test_extract_titles_normal():
     client = NewsAPIClient()
     sample = {
@@ -86,9 +82,8 @@ def test_extract_titles_missing_key():
         client.extract_titles({})
 
 
-# ------------------------------
-# Method 5: count_articles()
-# ------------------------------
+# method 5: count_articles()
+
 def test_count_articles_present():
     client = NewsAPIClient()
     sample = {"articles": [{"a": 1}, {"a": 2}]}
@@ -99,9 +94,8 @@ def test_count_articles_missing():
     assert client.count_articles({}) == 0
 
 
-# ------------------------------
-# Method 6: is_empty()
-# ------------------------------
+# method 6: is_empty()
+
 def test_is_empty_true():
     client = NewsAPIClient()
     assert client.is_empty({"articles": []}) is True
