@@ -18,28 +18,26 @@ class AlphaVantageAPIFetcher(NewsFetcherStrategy):
         self.output_file = self.generate_filename()
 
     def generate_filename(self):
-        #MMDDYYYY
         today = datetime.today().strftime("%m%d%Y")
         return f"stockdata_{self.symbol}_{today}.json"
     
     def fetch_news(self, ticker):
         params = {
             "function": self.function,
-            "symbol": self.symbol,
+            "symbol": ticker,
             "apikey": self.api_key
         }
 
         try:
             response = requests.get(self.BASE_URL, params=params)
             response.raise_for_status()
-            data = response.json()
-            return data
+            return response.json()
         except requests.exceptions.RequestException as e:
-            print(f"An error occured: {e}")
+            print(f"An error occurred: {e}")
             return None
         
     def save_news_to_file(self):
-        data = self.fetch_news()
+        data = self.fetch_news(self.symbol)
         if data:
             try:
                 with open(self.output_file, 'w', encoding="utf-8") as file:
