@@ -39,7 +39,7 @@ def test_generate_filename_contains_today_date(monkeypatch):
     # Monkeypatch date to predictable value
     fixed_date = datetime(2020, 1, 15)
     # Replaces datetime method with temporary monkeypatch mock
-    monkeypatch.setattr("newsdata_api_req.datetime", mock.Mock(today=mock.Mock(return_value=fixed_date)))
+    monkeypatch.setattr("backend.API_Callers.newsdata_api_req.datetime", mock.Mock(today=mock.Mock(return_value=fixed_date)))
     filename = fetcher.generate_filename()
     # Tests if file name is created correclty
     assert filename == "rawnews_01152020.json"
