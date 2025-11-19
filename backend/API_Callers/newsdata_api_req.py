@@ -20,7 +20,14 @@ class NewsDataAPIFetcher(NewsFetcherStrategy):
     def generate_filename(self):
         #MMDDYYYY
         today = datetime.today().strftime("%m%d%Y")
-        return f"raw_news_{today}.json"
+        filename = f"rawnews_{today}.json"
+
+        data_dir = os.path.join(os.path.dirname(__file__), '..', 'data')
+        data_dir = os.path.abspath(data_dir)
+
+        os.makedirs(data_dir, exist_ok=True)
+
+        return os.path.join(data_dir, filename)
 
     def fetch_news(self):
         params = {

@@ -1,0 +1,191 @@
+body {
+	margin: 0;
+font-family: 'DM Serif Display'
+	, serif;
+background:
+#f4f6f9;
+color:
+#222;
+transition:
+	all 0.3s ease;
+}
+
+.dark-mode {
+background:
+#1e1e1e;
+color:
+#f1f1f1;
+}
+
+header {
+display:
+	flex;
+justify-content:
+	space-between;
+align-items:
+	center;
+background:
+#004080;
+color:
+#fff;
+	padding: 1rem;
+}
+
+.logo {
+	font-size: 2rem;
+font-weight:
+	bold;
+}
+
+.header-right {
+display:
+	flex;
+align-items:
+	center;
+	gap: 0.5rem;
+}
+
+#searchBox, #sortDropdown {
+padding: 0.5rem;
+border-radius: 4px;
+border:
+none;
+}
+
+#modeToggle, #signInBtn {
+padding: 0.5rem 1rem;
+border:
+none;
+cursor:
+pointer;
+border-radius: 4px;
+background:
+#fff;
+color:
+#004080;
+font-weight:
+bold;
+}
+
+#signInBtn {
+background:
+#ffcc00;
+color:
+#222;
+}
+
+.container {
+display:
+	grid;
+	grid-template-columns: 220px 1fr;
+	gap: 1rem;
+	padding: 1rem;
+}
+
+aside {
+	border-right: 2px solid #ddd;
+}
+
+aside ul {
+list-style:
+	none;
+	padding: 0;
+}
+
+aside ul li {
+	margin: 1rem 0;
+font-weight:
+	bold;
+cursor:
+	pointer;
+color:
+#004080;
+}
+
+aside ul li:
+hover {
+text-decoration:
+	underline;
+}
+
+#newsContainer {
+display:
+grid;
+gap: 1rem;
+}
+
+.card {
+background:
+#fff;
+	padding: 1rem;
+	border-radius: 6px;
+	border: 1px solid #ddd;
+	box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+	margin: 0 0 0.5rem 0;
+color:
+#004080;
+}
+
+.card h2 a {
+color:
+	inherit;
+text-decoration:
+	none;
+}
+
+.card h2 a:
+hover {
+text-decoration:
+	underline;
+}
+
+.card .summary {
+	margin: 0.5rem 0;
+}
+
+.card .source, .card .date {
+display:
+	block;
+	margin-top: 0.5rem;
+	font-size: 0.85rem;
+color:
+	gray;
+}
+
+#loadMoreBtn {
+margin: 1rem 0;
+padding: 0.75rem 1.5rem;
+background:
+#004080;
+color:
+#fff;
+border:
+none;
+border-radius: 6px;
+cursor:
+pointer;
+}
+
+#loadMoreBtn:hover {
+background:
+#003366;
+}
+
+.dark-mode header {
+background:
+#111;
+}
+
+.dark-mode .card {
+background:
+#2a2a2a;
+	border: 1px solid #444;
+}
+
+.dark-mode aside ul li {
+color:
+#f1f1f1;
+}

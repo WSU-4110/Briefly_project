@@ -21,7 +21,14 @@ class TheNewsAPIFetcher(NewsFetcherStrategy):
     def generate_filename(self):
         today = datetime.today().strftime("%m%d%Y")
         safe_query = ''.join(c if c.isalnum() else '_' for c in self.query)
-        return f"thenewsapi_{safe_query}_{today}.json"
+        filename = f"thenewsapi_{safe_query}_{today}.json"
+
+        data_dir = os.path.join(os.path.dirname(__file__), '..', 'data')
+        data_dir = os.path.abspath(data_dir)
+
+        os.makedirs(data_dir, exist_ok=True)
+
+        return os.path.join(data_dir, filename)
 
     def fetch_news(self, ticker=None):
         params = {
