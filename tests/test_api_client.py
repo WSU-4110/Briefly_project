@@ -1,4 +1,6 @@
 import os
+import sys
+
 import json
 import tempfile
 import pytest
@@ -7,7 +9,11 @@ from unittest import mock
 
 import requests
 
-from API_Callers.newsdata_api_req import NewsDataAPIFetcher
+CURRENT_DIR = os.path.dirname(__file__)
+PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
+sys.path.append(PROJECT_ROOT)
+
+from backend.API_Callers.newsdata_api_req import NewsDataAPIFetcher
 
 #USES METHOD BEFORE AND AFTER EVERY TEST
 @pytest.fixture(autouse=True)
