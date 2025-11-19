@@ -82,11 +82,23 @@ function renderCard(article, query = "") {
   const card = document.createElement("div");
   card.classList.add("card");
   card.innerHTML = `
-    <h2><a href="${article.link}" target="_blank" rel="noopener">${highlight(article.headline, query)}</a></h2>
+    <h2>
+      <a href="${article.link}" target="_blank" rel="noopener">
+        ${highlight(article.headline, query)}
+      </a>
+      <button class="tts-btn" title="Read aloud" aria-label="Read aloud">🔊</button>
+    </h2>
     <p class="summary">${highlight(article.summary, query)}</p>
     <span class="source">Source: ${highlight(article.source, query)}</span>
     <span class="date">Date: ${highlight(article.date, query)}</span>
   `;
+
+  // 🔊 TTS click handler
+  const ttsBtn = card.querySelector(".tts-btn");
+  ttsBtn.addEventListener("click", () => {
+    speakArticle(article);
+  });
+
   return card;
 }
 
@@ -261,3 +273,19 @@ authForm.addEventListener("submit", (e) => {
   renderSignedIn(email);
   closeAuthModal();
 });
+
+function speakArticle(article) {
+  const text =
+    `${article.headline}. ` +
+    `${article.summary}. ` +
+    `Source: ${article.source}. ` +
+    `Published on ${article.date}.`;
+
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.rate = 1;  // speed
+  utter.pitch = 1; // tone
+  utter.volume = 1; // loudness
+
+  speechSynthesis.cancel(); // stop previous voices
+  speechSynthesis.speak(utter);
+}
