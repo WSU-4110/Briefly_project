@@ -39,7 +39,7 @@ def test_generate_filename(monkeypatch):
     filename = fetcher.generate_filename()
 
     today = __import__("datetime").datetime.today().strftime("%m%d%Y")
-    assert filename.endswith("stockdata_AAPL_{today}.json")
+    assert filename.endswith(f"stockdata_AAPL_{today}.json")
 
 
 # ---------- TEST 4: fetch_news returns data when API succeeds ----------
