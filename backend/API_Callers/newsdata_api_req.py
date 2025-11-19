@@ -3,7 +3,7 @@ import json
 import os
 from datetime import datetime
 
-from news_fetcher_strategy import NewsFetcherStrategy
+from .news_fetcher_strategy import NewsFetcherStrategy
 
 class NewsDataAPIFetcher(NewsFetcherStrategy):
     BASE_URL = "https://newsdata.io/api/1/news"
