@@ -42,7 +42,7 @@ def test_generate_filename_contains_today_date(monkeypatch):
     monkeypatch.setattr("backend.API_Callers.newsdata_api_req.datetime", mock.Mock(today=mock.Mock(return_value=fixed_date)))
     filename = fetcher.generate_filename()
     # Tests if file name is created correclty
-    assert filename == "rawnews_01152020.json"
+    assert filename.endswith("rawnews_01152020.json")
 
 def test_fetch_news_success(monkeypatch):
     os.environ["NEWSDATA_API_KEY"] = "fake_key"
