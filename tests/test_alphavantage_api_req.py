@@ -39,11 +39,11 @@ def test_generate_filename(monkeypatch):
     filename = fetcher.generate_filename()
 
     today = __import__("datetime").datetime.today().strftime("%m%d%Y")
-    assert filename == f"stockdata_AAPL_{today}.json"
+    assert filename.endswith("stockdata_AAPL_{today}.json")
 
 
 # ---------- TEST 4: fetch_news returns data when API succeeds ----------
-@patch("alphavantage_api_req.requests.get")
+@patch("backend.API_Callers.alphavantage_api_req.requests.get")
 def test_fetch_news_success(mock_get, monkeypatch):
     monkeypatch.setenv("ALPHAVANTAGE_API_KEY", "dummykey")
 
@@ -62,7 +62,7 @@ def test_fetch_news_success(mock_get, monkeypatch):
 
 
 # ---------- TEST 5: fetch_news handles API failure ----------
-@patch("alphavantage_api_req.requests.get")
+@patch("backend.API_Callers.alphavantage_api_req.requests.get")
 def test_fetch_news_failure(mock_get, monkeypatch):
     from requests.exceptions import RequestException
 
@@ -76,8 +76,8 @@ def test_fetch_news_failure(mock_get, monkeypatch):
 
 
 # ---------- TEST 6: save_news_to_file writes file when data exists ----------
-@patch("alphavantage_api_req.open", new_callable=mock_open)
-@patch("alphavantage_api_req.AlphaVantageAPIFetcher.fetch_news")
+@patch("backend.API_Callers.alphavantage_api_req.open", new_callable=mock_open)
+@patch("backend.API_Callers.alphavantage_api_req.AlphaVantageAPIFetcher.fetch_news")
 def test_save_news_to_file_success(mock_fetch_news, mock_file, monkeypatch):
     monkeypatch.setenv("ALPHAVANTAGE_API_KEY", "dummykey")
 
@@ -91,7 +91,7 @@ def test_save_news_to_file_success(mock_fetch_news, mock_file, monkeypatch):
 
 
 # ---------- TEST 7: save_news_to_file does nothing when fetch returns None ----------
-@patch("alphavantage_api_req.AlphaVantageAPIFetcher.fetch_news")
+@patch("backend.API_Callers.alphavantage_api_req.AlphaVantageAPIFetcher.fetch_news")
 def test_save_news_to_file_no_data(mock_fetch_news, monkeypatch):
     monkeypatch.setenv("ALPHAVANTAGE_API_KEY", "dummykey")
 
