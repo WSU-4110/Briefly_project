@@ -4,7 +4,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 import pytest
-from educational_article_analyzer import EducationalArticleAnalyzer
+from backend.Filtration.educational_article_analyzer import EducationalArticleAnalyzer
 
 
 class FakeFilter:

@@ -1,8 +1,15 @@
 import requests
+import sys
+import os
 
 import pytest
 from unittest.mock import patch, MagicMock
-from news_api_client import NewsAPIClient
+
+CURRENT_DIR = os.path.dirname(__file__)
+PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
+sys.path.append(PROJECT_ROOT)
+
+from backend.API_Callers.news_api_client import NewsAPIClient
 
 
 #method 1: make_params()

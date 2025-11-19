@@ -3,7 +3,7 @@ import json
 import os
 from datetime import datetime
 
-from news_fetcher_strategy import NewsFetcherStrategy
+from backend.API_Callers.news_fetcher_strategy import NewsFetcherStrategy
 
 class AlphaVantageAPIFetcher(NewsFetcherStrategy):
     BASE_URL = 'https://www.alphavantage.co/query'

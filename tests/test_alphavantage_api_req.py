@@ -1,7 +1,6 @@
 import os
 import sys
 
-# 🔧 Add the inner Briefly_project folder to sys.path
 # This makes sure Python can find alphavantage_api_req.py
 CURRENT_DIR = os.path.dirname(__file__)
 PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
@@ -10,7 +9,7 @@ sys.path.append(PROJECT_ROOT)
 import pytest
 from unittest.mock import patch, MagicMock, mock_open
 
-from alphavantage_api_req import AlphaVantageAPIFetcher
+from backend.API_Callers.alphavantage_api_req import AlphaVantageAPIFetcher
 
 
 # ---------- TEST 1: Constructor ERROR when API key missing ----------
