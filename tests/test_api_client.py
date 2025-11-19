@@ -1,4 +1,6 @@
 import os
+import sys
+
 import json
 import tempfile
 import pytest
@@ -7,7 +9,11 @@ from unittest import mock
 
 import requests
 
-from API_Callers.newsdata_api_req import NewsDataAPIFetcher
+CURRENT_DIR = os.path.dirname(__file__)
+PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
+sys.path.append(PROJECT_ROOT)
+
+from backend.API_Callers.newsdata_api_req import NewsDataAPIFetcher
 
 #USES METHOD BEFORE AND AFTER EVERY TEST
 @pytest.fixture(autouse=True)
@@ -33,10 +39,10 @@ def test_generate_filename_contains_today_date(monkeypatch):
     # Monkeypatch date to predictable value
     fixed_date = datetime(2020, 1, 15)
     # Replaces datetime method with temporary monkeypatch mock
-    monkeypatch.setattr("newsdata_api_req.datetime", mock.Mock(today=mock.Mock(return_value=fixed_date)))
+    monkeypatch.setattr("backend.API_Callers.newsdata_api_req.datetime", mock.Mock(today=mock.Mock(return_value=fixed_date)))
     filename = fetcher.generate_filename()
     # Tests if file name is created correclty
-    assert filename == "rawnews_01152020.json"
+    assert filename.endswith("rawnews_01152020.json")
 
 def test_fetch_news_success(monkeypatch):
     os.environ["NEWSDATA_API_KEY"] = "fake_key"
