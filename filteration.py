@@ -46,7 +46,7 @@ def classify_article(article):
         if k in text:
             return "IMPORTANT"
 
-    # ----------------------------
+    # -----------------------------
     # 4. Classify NOT IMPORTANT articles
     # ----------------------------
     not_important_keywords = [
